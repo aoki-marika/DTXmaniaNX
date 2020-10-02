@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -7,7 +10,6 @@ using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
 using FDK;
-
 using System.IO;
 
 namespace DTXMania
@@ -60,6 +62,7 @@ namespace DTXMania
 		[STAThread]
 		private static void Main()
 		{
+			AppCenter.Start("341f01d7-f75d-428f-a4c2-a442e0f9e4e8", typeof(Analytics), typeof(Crashes));
 			mutex二重起動防止用 = new Mutex( false, "DTXManiaMutex" );
 
 			if( mutex二重起動防止用.WaitOne( 0, false ) )
